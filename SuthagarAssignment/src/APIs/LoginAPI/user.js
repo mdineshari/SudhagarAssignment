@@ -43,10 +43,10 @@ export default class userInfo {
     if (this.checkCallback(callback)) {
       this.Database.startConnection();
       let res;
-      let connection = this.Database.db;
+
       if (this.checkCallback(callback)) {
         this.Database.startConnection();
-        connection.query(
+        this.Database.db.query(
           'SELECT userid,username,password from user where username = ?',
           [user.username],
           (err, result) => {

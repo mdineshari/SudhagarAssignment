@@ -1,19 +1,20 @@
 import mysql from 'mysql';
-import mysqlapi from './mysql-conn';
+import mysqlCon from './mysql-conn';
 export default class Database {
   constructor() {
     //this.db = mysqlapi;
+    this.db = mysqlCon;
   }
 
   startConnection() {
-    mysqlCon.connect().then(function(con) {
+    this.db.connect().then(function(con) {
       console.log('connected!');
       let mysql = con;
-      mysql.on('error', function(err, result) {
+      this.db.on('error', function(err, result) {
         console.log('error occurred. Reconneting...'.purple);
         reconnect();
       });
-      mysql.query('SELECT 1 + 1 AS solution', function(err, results) {
+      this.db.query('SELECT 1 + 1 AS solution', function(err, results) {
         if (err) console.log('err', err);
         console.log('Works bro ', results);
       });
@@ -23,8 +24,8 @@ export default class Database {
     mysqlCon.connect().then(
       function(con) {
         console.log('connected. getting new reference');
-        let mysql = con;
-        mysql.on('error', function(err, result) {
+        this.db = con;
+        this.db.on('error', function(err, result) {
           reconnect();
         });
       },
