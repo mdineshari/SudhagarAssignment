@@ -1,4 +1,4 @@
-import Database from '../../util/Database';
+import Database from '../util/Database';
 
 export default class Todo {
   constructor() {
@@ -14,32 +14,17 @@ export default class Todo {
     return true;
   }
 
-  getTodos(callback) {
-    if (this.checkCallback(callback)) {
-      this.Database.startConnection();
-
-      this.Database.db.query('SELECT * FROM todo', (error, rows, fields) => {
-        if (error) {
-          throw error;
-        }
-        let result = [];
-        rows.map(item => {
-          result.push({ ...item });
-        });
-        callback(result);
-      });
-    }
-  }
-
   getTodo(id, callback) {
     if (this.checkCallback(callback)) {
       this.Database.startConnection();
-      let query = `DELETE FROM todo WHERE id=${id}`;
+      let query = `SELECT * FROM todo WHERE userid=${id}`;
       this.Database.db.query(query, (error, rows) => {
         if (error) {
           throw error;
         }
-        callback('Delete Data Success');
+        if (rows.length === 0)
+          callback(`Error: ${rows.length} record found for userid:${id}`);
+        else callback(rows);
       });
     }
   }
@@ -47,20 +32,7 @@ export default class Todo {
   deleteTodo(callback) {
     if (this.checkCallback(callback)) {
       this.Database.startConnection();
-      let query = `DELETE FROM todo WHERE id=${id}`;
-      this.Database.db.query(query, (error, rows) => {
-        if (error) {
-          throw error;
-        }
-        callback('Delete Data Success');
-      });
-    }
-  }
-
-  flushTodo(callback) {
-    if (this.checkCallback(callback)) {
-      this.Database.startConnection();
-      let query = 'TRUNCATE TABLE todo';
+      let query = `DELETE FROM todo WHERE userid=${id}`;
       this.Database.db.query(query, (error, rows) => {
         if (error) {
           throw error;
@@ -73,13 +45,15 @@ export default class Todo {
   createTodo(todo, callback) {
     if (this.checkCallback(callback)) {
       this.Database.startConnection();
-      let query = `INSERT INTO todo(name) values('${todo.name}')`;
+      let query = `INSERT INTO todo(userid,name) values('${todo.userid}','${
+        todo.name
+      }')`;
 
       this.Database.db.query(query, (error, rows) => {
         if (error) {
           throw error;
         }
-        callback('Create Data Success');
+        callback(rows);
       });
     }
   }

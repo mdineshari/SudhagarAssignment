@@ -1,4 +1,4 @@
-import Database from '../../util/Database';
+import Database from '../util/Database';
 var jsonwebtoken = require('jsonwebtoken');
 var bcrypt = require('bcrypt-nodejs');
 
