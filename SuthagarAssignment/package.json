@@ -7,6 +7,7 @@
     "watch": "cross-env NODE_ENV=development webpack --watch --mode=development",
     "production": "cross-env NODE_ENV=production webpack --progress -p --mode=production",
     "start": "node src/index.js",
+    "start-dev": "nodemon src/index.js",
     "build": "babel server --out-dir build --presets=es2015 && webpack"
   },
   "author": "Subramani.M",

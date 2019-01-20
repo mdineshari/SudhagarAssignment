@@ -14,10 +14,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.get('/login', (request, response) => {
   let myUser = new user();
   var userInfo = {
-    username: request.body.username,
-    password: request.body.password,
+    username: request.query.username,
+    password: request.query.password,
   };
-
+  console.log('dsfafds ' + userInfo.username);
   myUser.getTodos(userInfo, result => {
     myUser.Database.stopConnection();
     response
@@ -33,18 +33,16 @@ app.get('/login', (request, response) => {
 });
 
 app.post('/signup', (req, res) => {
-  var user = {
+  var userinfo = {
     userid: 0,
     username: req.body.username,
     password: req.body.password,
   };
-  bcrypt.hash(user.password, null, null, function(err, hash) {
-    user.password = hash;
-  });
+
   let myUser = new user();
-  myTodo.createTodo(user, result => {
-    myTodo.Database.stopConnection();
-    response
+  myUser.createTodo(userinfo, result => {
+    myUser.Database.stopConnection();
+    res
       .json({
         success: {
           status: 200,

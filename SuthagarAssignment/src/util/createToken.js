@@ -1,5 +1,5 @@
-var jsonwebtoken = require('jsonwebtoken');
 
+var secretKey = 
 export default class createToken {
   constructor(user) {
     var token = jsonwebtoken.sign(
@@ -7,10 +7,7 @@ export default class createToken {
         id: user.id,
         username: user.username,
       },
-      secretKey,
-      {
-        expirtsInMinute: 1440,
-      }
+      '123456789'
     );
     return token;
   }

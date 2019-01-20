@@ -1,23 +1,23 @@
 import mysql from 'mysql';
-import mysqlCon from './mysql-conn';
+
 export default class Database {
   constructor() {
-    //this.db = mysqlapi;
-    this.db = mysqlCon;
+    const config = {
+      host: 'localhost',
+      user: 'root',
+      password: 'test1',
+      database: 'todoassignment',
+    };
+    this.db = mysql.createPool(config);
   }
 
   startConnection() {
-    this.db.connect().then(function(con) {
-      console.log('connected!');
-      let mysql = con;
-      this.db.on('error', function(err, result) {
-        console.log('error occurred. Reconneting...'.purple);
-        reconnect();
-      });
-      this.db.query('SELECT 1 + 1 AS solution', function(err, results) {
-        if (err) console.log('err', err);
-        console.log('Works bro ', results);
-      });
+    this.db.getConnection((error, connection) => {
+      if (error) {
+        throw error;
+      }
+      console.log('Database Connected');
+      return connection;
     });
   }
   reconnect() {

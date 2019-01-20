@@ -1,5 +1,5 @@
 import Database from '../../util/Database';
-import createToken from '../../util/createToken';
+var jsonwebtoken = require('jsonwebtoken');
 var bcrypt = require('bcrypt-nodejs');
 
 export default class userInfo {
@@ -8,6 +8,7 @@ export default class userInfo {
       this.Database = new Database();
     }
   }
+
   checkCallback(callback) {
     if (typeof callback !== 'function') {
       throw 'callback must be a function';
@@ -43,39 +44,44 @@ export default class userInfo {
     if (this.checkCallback(callback)) {
       this.Database.startConnection();
       let res;
-
-      if (this.checkCallback(callback)) {
-        this.Database.startConnection();
-        this.Database.db.query(
-          'SELECT userid,username,password from user where username = ?',
-          [user.username],
-          (err, result) => {
-            console.log(user.username);
-            if (err) {
-              res = { type: 'error', code: 403, data: false };
-              callback(res);
+      console.log('dsfdsfds' + user.username);
+      this.Database.db.query(
+        'SELECT userid,username,password from usermanagement where username = ?',
+        [user.username],
+        (err, rows) => {
+          console.log(user.username);
+          if (err) {
+            res = { type: 'error', code: 403, data: false };
+            callback(res);
+          } else {
+            let result = [];
+            rows.map(item => {
+              result.push({ ...item });
+            });
+            console.log(user.password, result[0].password);
+            //bcrypt.compare(user.password, result[0].password, (err, status) => {
+            console.log(err);
+            if (user.password === result[0].password) {
+              var token = jsonwebtoken.sign(
+                {
+                  id: result[0].userid,
+                  username: result[0].username,
+                },
+                '123456789'
+              );
+              res = {
+                type: 'success',
+                code: 200,
+                data: 'Valid username',
+                token: token,
+              };
             } else {
-              bcrypt.compare(user.password, result.password, (err, status) => {
-                if (status == true) {
-                  var token = new createToken({
-                    id: result.userid,
-                    username: result.username,
-                  });
-                  res = {
-                    type: 'success',
-                    code: 200,
-                    data: status,
-                    token: token,
-                  };
-                } else {
-                  res = { type: 'error', code: 403, data: status };
-                }
-                callback(res);
-              });
+              res = { type: 'error', code: 403, data: 'Invalid User' };
             }
+            callback(res);
           }
-        );
-      }
+        }
+      );
     }
   }
 }

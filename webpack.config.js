@@ -6,6 +6,9 @@ module.exports = {
     path: path.resolve('dist/js'),
     filename: 'bundle.js',
   },
+  devServer: {
+    contentBase: './dist',
+  },
   module: {
     rules: [
       {
