@@ -1,0 +1,40 @@
+{
+  "name": "todoassignment",
+  "version": "1.0.0",
+  "description": "ToDoAssignment from softcyrlic company.",
+  "main": "src/index.js",
+  "scripts": {
+    "watch": "cross-env NODE_ENV=development webpack --watch --mode=development",
+    "production": "cross-env NODE_ENV=production webpack --progress -p --mode=production",
+    "start": "node src/index.js",
+    "build": "babel server --out-dir build --presets=es2015 && webpack"
+  },
+  "author": "Subramani.M",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.5",
+    "babel-plugin-transform-async-to-generator": "^6.24.1",
+    "babel-plugin-transform-decorators-legacy": "^1.3.5",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-stage-0": "^6.24.1",
+    "compression-webpack-plugin": "^2.0.0",
+    "joi": "^14.3.1",
+    "mysql-migrations": "^1.0.6",
+    "webpack": "^4.28.4",
+    "webpack-cli": "^3.2.1"
+  },
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.18.3",
+    "colors": "^1.3.3",
+    "express": "^4.16.4",
+    "express-validation": "^1.0.2",
+    "jsonwebtoken": "^8.4.0",
+    "mysql": "^2.16.0",
+    "q": "^1.5.1"
+  }
+}

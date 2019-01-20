@@ -1,0 +1,21 @@
+{
+  "name": "todolistapi",
+  "version": "1.0.0",
+  "description": "ToDoList assignment from softcylic chennai",
+  "main": "index.js",
+  "scripts": {
+    "test": "index.spec.js"
+  },
+  "author": "Subramani M",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parse": "^0.1.0",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "jsonwebtoken": "^8.4.0",
+    "morgan": "^1.9.1",
+    "mysql2": "^1.6.4"
+  },
+  "devDependencies": {}
+}
