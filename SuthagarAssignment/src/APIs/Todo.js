@@ -29,10 +29,10 @@ export default class Todo {
     }
   }
 
-  deleteTodo(callback) {
+  deleteTodo(id, callback) {
     if (this.checkCallback(callback)) {
       this.Database.startConnection();
-      let query = `DELETE FROM todo WHERE userid=${id}`;
+      let query = `DELETE FROM todo WHERE id=${id}`;
       this.Database.db.query(query, (error, rows) => {
         if (error) {
           throw error;
@@ -45,13 +45,13 @@ export default class Todo {
   createTodo(todo, callback) {
     if (this.checkCallback(callback)) {
       this.Database.startConnection();
-      let query = `INSERT INTO todo(userid,name) values('${todo.userid}','${
+      let query = `INSERT INTO todo(userid,name) values('${todo.userId}','${
         todo.name
       }')`;
 
       this.Database.db.query(query, (error, rows) => {
         if (error) {
-          throw error;
+          callback(error);
         }
         callback(rows);
       });

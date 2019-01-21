@@ -2,14 +2,9 @@ import user from '../APIs/user.js';
 module.exports = function(express) {
   var app = express.Router();
 
-  app.get('/login', (request, response) => {
+  app.post('/login', (request, response) => {
     let myUser = new user();
-    var userInfo = {
-      username: request.query.username,
-      password: request.query.password,
-    };
-    console.log('dsfafds ' + userInfo.username);
-    myUser.getTodos(userInfo, result => {
+    myUser.getUser(request.body, result => {
       myUser.Database.stopConnection();
       response
         .json({
@@ -25,7 +20,6 @@ module.exports = function(express) {
 
   app.post('/signup', (req, res) => {
     var userinfo = {
-      userid: 0,
       username: req.body.username,
       password: req.body.password,
     };

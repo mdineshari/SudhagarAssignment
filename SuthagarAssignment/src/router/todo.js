@@ -35,7 +35,7 @@ module.exports = function(express) {
     });
   });
 
-  app.get('/delete/:id', (request, response) => {
+  app.delete('/delete/:id', (request, response) => {
     let myTodo = new Todo();
 
     myTodo.deleteTodo(request.params.id, result => {

@@ -1,0 +1,46 @@
+<div class="row justify-content-md-center">
+  <div class="col-md-3">&nbsp;</div>
+  <div class="col-md-6"><h1>To-do list</h1></div>
+  <div class="col-md-3">
+    <div class="form-group">
+      <button class="btn btn-primary" (click)="onLogout()">Logout</button>
+    </div>
+  </div>
+</div>
+
+<!-- NEW ITEM -->
+<div class="row justify-content-md-center">
+  <form (ngSubmit)="onSubmit()" [formGroup]="newItemForm">
+    <div class="form-group">
+      <label for="itemName">Item name</label>
+      <input type="text" formControlName="name" class="form-control" />
+    </div>
+
+    <div class="form-group">
+      <button class="btn btn-primary" type="submit">
+        ADD
+        <span class="badge badge-light" *ngIf="items && items.length > 0">{{
+          items.length
+        }}</span>
+      </button>
+    </div>
+  </form>
+</div>
+
+<!-- LIST OF ITEMS -->
+<div class="row justify-content-md-center">
+  <ul class="list-group">
+    <li
+      class="list-group-item list-group-item-action"
+      *ngFor="let item of items"
+    >
+      <span>{{ item.name }}</span>
+      <div class="pull-right">
+        <button
+          class="btn btn-danger btn-xs fa fa-trash-o"
+          (click)="onRemove(item)"
+        ></button>
+      </div>
+    </li>
+  </ul>
+</div>

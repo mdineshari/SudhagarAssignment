@@ -40,16 +40,14 @@ export default class userInfo {
     }
   }
 
-  getTodos(user, callback) {
+  getUser(user, callback) {
     if (this.checkCallback(callback)) {
       this.Database.startConnection();
       let res;
-      console.log('dsfdsfds' + user.username);
       this.Database.db.query(
         'SELECT userid,username,password from usermanagement where username = ?',
         [user.username],
         (err, rows) => {
-          console.log(user.username);
           if (err) {
             res = { type: 'error', code: 403, data: false };
             callback(res);
@@ -58,7 +56,6 @@ export default class userInfo {
             rows.map(item => {
               result.push({ ...item });
             });
-            console.log(user.password, result[0].password);
             //bcrypt.compare(user.password, result[0].password, (err, status) => {
             console.log(err);
             if (user.password === result[0].password) {
@@ -72,7 +69,7 @@ export default class userInfo {
               res = {
                 type: 'success',
                 code: 200,
-                data: 'Valid username',
+                data: result[0],
                 token: token,
               };
             } else {
