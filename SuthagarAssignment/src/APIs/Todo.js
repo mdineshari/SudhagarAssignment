@@ -35,7 +35,8 @@ export default class Todo {
       let query = `DELETE FROM todo WHERE id=${id}`;
       this.Database.db.query(query, (error, rows) => {
         if (error) {
-          throw error;
+          //throw error;
+          callback({ type: 'error', code: 403, data: false });
         }
         callback('Delete Data Success');
       });

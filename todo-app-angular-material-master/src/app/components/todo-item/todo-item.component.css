@@ -1,0 +1,52 @@
+.todo-card button {
+  float: right;
+}
+
+button:nth-of-type(1) {
+  margin-left: 20px;
+}
+
+.mat-card {
+  display: flex;
+  padding: 50px 20px;
+
+}
+
+.mat-card-container {
+  width: 95%;
+}
+
+.mat-card-actions-container {
+  float: right;
+}
+
+.material-icons {
+  position: relative;
+  bottom: -8px;
+}
+
+.material-icons:hover {
+  color: purple;
+  cursor: pointer;
+}
+
+::ng-deep .mat-menu-content {
+  overflow: hidden;
+}
+
+::ng-deep .mat-menu-item {
+  font-size: 12px;
+}
+
+::ng-deep .mat-menu-panel {
+  min-width: 0 !important;
+}
+
+button[_ngcontent-c3]:nth-of-type(1) {
+  margin-left: 0;
+}
+
+.done {
+  color: #a9a9a9;
+  text-decoration: line-through;
+}

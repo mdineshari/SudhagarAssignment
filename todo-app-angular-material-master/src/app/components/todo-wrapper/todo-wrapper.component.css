@@ -1,0 +1,17 @@
+.content-wrapper {
+  list-style: none;
+  padding: 0;
+}
+.todo-item-wrapper {
+  margin: 0 auto;
+  width: 800px;
+}
+
+.divider {
+  height: 10px;
+}
+button{
+  float: right;
+  margin-bottom: 50px;
+  margin-right: 50px;
+}

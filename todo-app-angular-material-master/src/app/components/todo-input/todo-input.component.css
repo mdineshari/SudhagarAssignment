@@ -1,0 +1,26 @@
+* {
+  margin: 0 auto;
+}
+
+.todo-full-width {
+  width: 100%;
+}
+
+.todo-form {
+  padding: 0 25px;
+}
+
+.button-container {
+  text-align: right;
+}
+
+.btn:first-child {
+  margin-right: 30px;
+}
+
+.todo-card {
+  width: 600px;
+  margin-bottom: 20px;
+}
+
+

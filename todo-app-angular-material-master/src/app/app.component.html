@@ -1,0 +1,8 @@
+<div class="ToDoApp">
+  <app-header></app-header>
+  <app-todo-input [showMe]="todoService.showTodo"></app-todo-input>
+  <app-todo-wrapper [showingProfile]="todoService.getShowprofile()"></app-todo-wrapper>
+  <div class="app-profile-wrapper">
+    <app-profile-input></app-profile-input>
+  </div>
+</div>

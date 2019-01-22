@@ -1,0 +1,32 @@
+.profile-card {
+  width: 600px;
+  margin: 50px auto;
+
+}
+
+.profile-full-width {
+  width: 100%;
+}
+
+.button-container {
+  text-align: right;
+}
+
+.input-nav-container {
+  background: grey;
+  padding: 0 0 10px 0;
+  width: 800px;
+  margin: 0 auto;
+}
+
+.svgIcon {
+  color: black;
+  width: 50px;
+  background: grey;
+  height: 28px;
+}
+
+.material-icons {
+  color: black;
+}
+

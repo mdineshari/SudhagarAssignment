@@ -1,0 +1,23 @@
+<div class="profile-input-wrapper" *ngIf="todoService.getShowprofile()">
+  <div class=input-nav-container>
+    <button mat-raised-button class="svgIcon" (click)="todoService.setShowprofile()">
+      <i class="material-icons">arrow_back</i>
+    </button>
+  </div>
+  <mat-card class="profile-card">
+    <form class="profile-form">
+      <mat-form-field class="profile-full-width">
+        <textarea matInput [(ngModel)]="nameText" [ngModelOptions]="{standalone: true}" value={{nameText}}
+                  placeholder="Name"></textarea>
+      </mat-form-field>
+      <mat-form-field class="profile-full-width">
+        <textarea matInput [(ngModel)]="emailText" [ngModelOptions]="{standalone: true}" value={{emailText}}
+                  placeholder="Email"></textarea>
+      </mat-form-field>
+      <div class="clearfix"></div>
+      <div class="button-container">
+        <button mat-raised-button color="primary" type="button" (click)="saveUser()">Save</button>
+      </div>
+    </form>
+  </mat-card>
+</div>

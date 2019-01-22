@@ -1,0 +1,24 @@
+<mat-card class="todo-card" [ngClass]="checked ? 'done' : ''">
+  <div class="mat-card-container">
+    <mat-card-content>
+      <div>
+        {{todo.date | date:'fullDate'}}
+        {{todo.date | date:'shortTime'}}
+      </div>
+      <p>
+        {{todo.text}}
+      </p>
+    </mat-card-content>
+  </div>
+  <div class="mat-card-actions-container">
+    <mat-card-actions>
+      <mat-checkbox matTooltip="Done" color="primary" [(ngModel)]="checked"></mat-checkbox>
+      <a class="svgIcon" matTooltip="Delete" [matMenuTriggerFor]="menu">
+        <i class="material-icons">more_vert</i>
+        <mat-menu class="test" [overlapTrigger]="false" #menu="matMenu">
+          <button mat-menu-item (click)="deleteTodo()">Delete</button>
+        </mat-menu>
+      </a>
+    </mat-card-actions>
+  </div>
+</mat-card>

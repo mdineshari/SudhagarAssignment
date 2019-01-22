@@ -1,0 +1,9 @@
+<ol class="content-wrapper" *ngIf="!todoService.getShowprofile()">
+  <li *ngFor="let todo of todoService.getTodos() | orderBy" class="todo-item-wrapper">
+    <app-todo-item [todo]="todo"></app-todo-item>
+    <div class="divider"></div>
+  </li>
+  <div class="button-container">
+    <button mat-fab color="warn" [disabled]="todoService.getShowinput()" (click)="todoService.showInput()">+</button>
+  </div>
+</ol>

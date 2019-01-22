@@ -1,0 +1,20 @@
+<mat-card *ngIf="showMe" class="todo-card">
+  <form class="todo-form">
+    <h4>New Task</h4>
+    <mat-form-field class="todo-full-width">
+      <textarea matInput [(ngModel)]="todoText" [ngModelOptions]="{standalone: true}"
+                placeholder="Task Name"></textarea>
+    </mat-form-field>
+    <div class="input-wrapper">
+      <div><h4>Date/Time</h4></div>
+      <input matInput [(ngModel)]="todoDate" [ngModelOptions]="{standalone: true}"
+             [owlDateTimeTrigger]="dtPicker1" [owlDateTime]="dtPicker1">
+      <owl-date-time #dtPicker1></owl-date-time>
+    </div>
+    <div class="clearfix"></div>
+    <div class="button-container">
+      <button mat-raised-button color="accent" (click)="cancelTodo()">Cancel</button>
+      <button mat-raised-button color="primary" (click)="addTodo()">Save Task</button>
+    </div>
+  </form>
+</mat-card>

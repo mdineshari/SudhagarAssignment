@@ -1,0 +1,34 @@
+
+.hero-container {
+  width: 800px;
+  margin: 0 auto;
+}
+
+.profile-container {
+  position: relative;
+  width: 100px;
+  top: -325px;
+  left: 630px;
+}
+
+#hero-figure {
+  -webkit-margin-after: 0;
+  -webkit-margin-before: 0;
+  -webkit-margin-end: 0;
+  -webkit-margin-start: 0;
+  height: 340px;
+}
+
+figcaption {
+  background: grey;
+  padding: 10px 0;
+  width: 800px;
+  margin: 0 auto;
+}
+
+.date-container {
+  width: 80%;
+  margin: 0 auto;
+  text-align: left;
+  color: white;
+}

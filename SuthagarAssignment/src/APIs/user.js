@@ -33,7 +33,7 @@ export default class userInfo {
 
       this.Database.db.query(query, (error, rows) => {
         if (error) {
-          throw error;
+          callback({ type: 'error', code: 403, data: false });
         }
         callback('Create Data Success');
       });

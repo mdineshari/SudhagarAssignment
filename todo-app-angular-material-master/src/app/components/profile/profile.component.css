@@ -1,0 +1,25 @@
+.profile {
+  color: white;
+}
+
+.material-icons {
+  margin-right: 5px;
+}
+
+.svgIcon {
+  background-color: transparent;
+}
+
+.svgIcon:hover {
+  background-color: rgba(128, 128, 128, 0.5);
+}
+
+::ng-deep .profile-menu {
+  width: 100px;
+}
+
+.move-down {
+  position: relative;
+  top: 38px;
+}
+

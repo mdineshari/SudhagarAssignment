@@ -1,0 +1,12 @@
+<div class="profile" [ngClass]="todoService.getShowprofile() ? 'move-down' : ''">
+  <button mat-raised-button color="warn" class="svgIcon" [matMenuTriggerFor]="menu">
+    <i class="material-icons">person</i><span class="user-name-container">{{todoService.getProfile()}}</span>
+  </button>
+</div>
+<mat-menu class="profile-menu" #menu="matMenu">
+  <button mat-menu-item *ngIf="todoService.getProfile() == 'Guest'" (click)="todoService.setShowprofile()">Login
+  </button>
+  <button mat-menu-item *ngIf="todoService.getProfile() !== 'Guest'" (click)="todoService.setShowprofile()">Edit
+    Profile
+  </button>
+</mat-menu>
